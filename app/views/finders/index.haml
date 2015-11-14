@@ -1,0 +1,18 @@
+%p#notice= notice
+%h1 Listing Finders
+%table
+  %thead
+    %tr
+      %th Name
+      %th Reference
+      %th{:colspan => "3"}
+  %tbody
+    - @finders.each do |finder|
+      %tr
+        %td= finder.name
+        %td= link_to finder.reference, finder.reference, target: '_blank'
+        %td= link_to 'Show', finder
+        %td= link_to 'Edit', edit_finder_path(finder)
+        %td= link_to 'Destroy', finder, method: :delete, data: { confirm: 'Are you sure?' }
+%br
+  = link_to 'New Finder', new_finder_path

@@ -1,0 +1,8 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @finder.name
+%p
+  %strong Reference:
+  = @finder.reference
+= link_to 'Edit', edit_finder_path(@finder) | "#{link_to 'Back', finders_path}"
