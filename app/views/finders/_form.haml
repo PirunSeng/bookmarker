@@ -1,0 +1,19 @@
+= form_for(@finder) do |f|
+  - if @finder.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@finder.errors.count, "error")
+        prohibited this finder from being saved:
+      %ul
+        - @finder.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :name
+    %br
+      = f.text_field :name
+  .field
+    = f.label :reference
+    %br
+      = f.text_field :reference
+  .actions
+    = f.submit
