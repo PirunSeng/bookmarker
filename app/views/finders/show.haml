@@ -1,10 +1,12 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @finder.name
-%p
-  %strong Reference:
-  = @finder.reference
-= link_to 'Edit', edit_finder_path(@finder)
-|
-= link_to 'Back', finders_path
+.row
+  .col-xs-12
+    %p#notice= notice
+    %p
+      %strong Name:
+      = @finder.name
+    %p
+      %strong Reference:
+      = @finder.reference
+    = link_to 'Edit', edit_finder_path(@finder), class: 'btn btn-link'
+    |
+    = link_to 'Back', finders_path, class: 'btn btn-link'
