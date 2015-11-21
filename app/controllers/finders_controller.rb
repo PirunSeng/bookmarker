@@ -11,7 +11,7 @@ class FindersController < ApplicationController
   end
 
   def index
-    @finders = Finder.all
+    @finders = Finder.all.order(:name)
   end
 
   def show
