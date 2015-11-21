@@ -9,14 +9,10 @@
       %a.navbar-brand{:href => "/"} FastFinder
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li
-          %a{:href => "#"}
-            Ruby on Rails
-            %span.sr-only (current)
-      / %form.navbar-form.navbar-left{:role => "search"}
-      /   .form-group
-      /     %input.form-control{:placeholder => "Search", :type => "text"}
-      /   %button.btn.btn-default{:type => "submit"} Submit
+        - @categories.each do |category|
+          %li
+            = link_to category.name, "/#{category.name.gsub(' ', '').downcase}"
+
       %ul.nav.navbar-nav.navbar-right
         - unless user_signed_in?
           %li

@@ -1,4 +1,4 @@
-= form_for(@finder) do |f|
+= simple_form_for @finder do |f|
   - if @finder.errors.any?
     #error_explanation
       %h2
@@ -8,10 +8,10 @@
         - @finder.errors.full_messages.each do |message|
           %li= message
   .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
+    = f.input :name, input_html: { class: 'form-control' }
   .form-group
-    = f.label :reference
-    = f.text_field :reference, class: 'form-control'
+    = f.input :reference, input_html: { class: 'form-control' }
+  .form-group
+    = f.association :category, prompt: "Select Category", input_html: { class: 'form-control' }
   .form-group
     = f.submit class: 'btn btn-primary'

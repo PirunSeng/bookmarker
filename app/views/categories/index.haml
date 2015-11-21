@@ -1,0 +1,21 @@
+.row
+  .col-xs-12
+    %h1.text-center Listing Categories
+    - if user_signed_in?
+      %h3.text-center= link_to 'Add New Category', new_category_path, class: 'btn btn-success'
+  .col-sm-12
+    %table.table.table-hover
+      %thead
+        %tr
+          %th #
+          %th Looking For
+          %th References
+      %tbody
+        - @categories.each_with_index do |category, index|
+          %tr
+            %td= index+1
+            - if user_signed_in?
+              %td= link_to h(category.name), category
+            - else
+              %td= h(category.name)
+            %td= link_to h(category.reference), h(category.reference), target: '_blank'

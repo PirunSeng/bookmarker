@@ -1,0 +1,11 @@
+.row
+  .col-xs-12
+    %p
+      %strong Name:
+      = @category.name
+    %p
+      %strong Reference:
+      = @category.reference
+    = link_to 'Edit', edit_category_path(@category), class: 'btn btn-link'
+    |
+    = link_to 'Back', categories_path, class: 'btn btn-link'

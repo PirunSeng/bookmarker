@@ -1,30 +1,32 @@
 class FindersController < ApplicationController
   before_action :set_finder, only: [:show, :edit, :update, :destroy]
+  before_action :set_category
 
-  # GET /finders
-  # GET /finders.json
+  def rubyonrails
+    @finders = Finder.rubyonrails
+  end
+
+  def jquery
+    @finders = Finder.jquery
+  end
+
   def index
     @finders = Finder.all
   end
 
-  # GET /finders/1
-  # GET /finders/1.json
   def show
   end
 
-  # GET /finders/new
   def new
     @finder = Finder.new
   end
 
-  # GET /finders/1/edit
   def edit
   end
 
-  # POST /finders
-  # POST /finders.json
   def create
     @finder = Finder.new(finder_params)
+    @finder.user_id = current_user.id
 
     respond_to do |format|
       if @finder.save
@@ -37,8 +39,6 @@ class FindersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /finders/1
-  # PATCH/PUT /finders/1.json
   def update
     respond_to do |format|
       if @finder.update(finder_params)
@@ -51,8 +51,6 @@ class FindersController < ApplicationController
     end
   end
 
-  # DELETE /finders/1
-  # DELETE /finders/1.json
   def destroy
     @finder.destroy
     respond_to do |format|
@@ -62,13 +60,17 @@ class FindersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_finder
       @finder = Finder.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+
     def finder_params
-      params.require(:finder).permit(:name, :reference)
+      params.require(:finder).permit(:name, :reference, :category_id)
+    end
+
+    def set_category
+      @categories = Category.all
     end
 end
