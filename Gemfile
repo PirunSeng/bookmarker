@@ -17,6 +17,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form', '~> 3.2'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'will_paginate', '~> 3.0', '>= 3.0.7'
 
 group :development, :test do
   gem 'byebug'
