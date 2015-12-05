@@ -12,6 +12,12 @@
           %strong Check this :
       .col-xs-12.col-sm-9
         %h5= link_to "#{@finder.reference}", @finder.reference
+    .row
+      .col-xs-12.col-sm-3
+        %h5
+          %strong Category :
+      .col-xs-12.col-sm-9
+        %h5= @finder.category.name
     - if user_signed_in?
       = link_to 'Edit', edit_finder_path(@finder), class: 'btn btn-link'
       |
