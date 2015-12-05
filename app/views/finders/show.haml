@@ -1,11 +1,27 @@
 .row
-  .col-xs-12
-    %p
-      %strong Name:
-      = @finder.name
-    %p
-      %strong Reference:
-      = @finder.reference
-    = link_to 'Edit', edit_finder_path(@finder), class: 'btn btn-link'
-    |
-    = link_to 'Back', finders_path, class: 'btn btn-link'
+  .col-xs-12.col-sm-8
+    .row
+      .col-xs-12.col-sm-3
+        %p
+          %strong Are you looking for :
+      .col-xs-12.col-sm-9
+        %p= @finder.name
+    .row
+      .col-xs-12.col-sm-3
+        %p
+          %strong Check out this link :
+      .col-xs-12.col-sm-9
+        %p
+          = link_to "#{@finder.reference}", @finder.reference
+    - if user_signed_in?
+      = link_to 'Edit', edit_finder_path(@finder), class: 'btn btn-link'
+      |
+      = link_to 'Back', finders_path, class: 'btn btn-link'
+  / Related Finders, implement this later
+  / .col-xs-12.col-sm-4
+  /   %p
+  /     %strong Are you looking for:
+  /     = @finder.name
+  /   %p
+  /     %strong Check out this link:
+  /     = @finder.reference
