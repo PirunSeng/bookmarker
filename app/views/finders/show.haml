@@ -2,12 +2,14 @@
   .col-xs-12.col-sm-8
     .row
       .col-xs-12.col-sm-3
-        %h5 Looking for :
+        %h5
+          %strong Looking for :
       .col-xs-12.col-sm-9
         %h4= @finder.name
     .row
       .col-xs-12.col-sm-3
-        %h5 Check this :
+        %h5
+          %strong Check this :
       .col-xs-12.col-sm-9
         %h5= link_to "#{@finder.reference}", @finder.reference
     - if user_signed_in?
