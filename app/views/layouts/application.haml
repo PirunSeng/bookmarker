@@ -9,7 +9,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     %script{:src => "https://use.typekit.net/fpe2ffe.js"}
     :javascript
-      try{Typekit.load({ async: true });}catch(e){}
+      try{Typekit.load({ async: false });}catch(e){}
     = csrf_meta_tags
   %body
     = render 'shared/navbar_header'
