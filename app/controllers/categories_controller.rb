@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :only_admin
 
   def new
     @category = Category.new
@@ -38,6 +39,12 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+    def only_admin
+      if current_user.role != 'admin'
+        redirect_to root_path, notce: "You're not authorized to perform this action."
+      end
+    end
 
     def set_category
       @category = Category.find(params[:id])

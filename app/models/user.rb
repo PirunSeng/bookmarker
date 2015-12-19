@@ -6,4 +6,12 @@ class User < ActiveRecord::Base
 
   has_many :categories
   has_many :finders
+
+  def admin?
+  	role == 'admin'
+  end
+
+  def author?
+  	role == 'author'
+  end
 end
