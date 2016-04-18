@@ -8,12 +8,6 @@
         %span.icon-bar
       %a.navbar-brand{:href => "/"} FastFinder
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        - if @categories.present?
-          - @categories.each do |category|
-            %li
-              = link_to category.name, "/#{category.name.gsub(' ', '').downcase}"
-
       %ul.nav.navbar-nav.navbar-right
         - unless user_signed_in?
           %li

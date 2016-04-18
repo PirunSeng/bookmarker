@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :only_admin
+  before_action :find_category, only: [:edit, :update, :destroy]
 
   def new
     @category = Category.new
@@ -19,23 +20,16 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        format.json { render :show, status: :ok, location: @category }
-      else
-        format.html { render :edit }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+    if @category.update(category_params)
+      redirect_to root_path, notice: 'Category was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @category.destroy
-    respond_to do |format|
-      format.html { redirect_to categorys_url, notice: 'Category was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to categorys_url, notice: 'Category was successfully destroyed.'
   end
 
   private
@@ -46,7 +40,7 @@ class CategoriesController < ApplicationController
       end
     end
 
-    def set_category
+    def find_category
       @category = Category.find(params[:id])
     end
 

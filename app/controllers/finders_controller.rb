@@ -2,14 +2,6 @@ class FindersController < ApplicationController
   before_action :set_finder, only: [:show, :edit, :update, :destroy]
   before_action :set_category
 
-  def rubyonrails
-    @finders = Finder.rubyonrails.paginate(:page => params[:page], :per_page => 20)
-  end
-
-  def jquery
-    @finders = Finder.jquery.paginate(:page => params[:page], :per_page => 20)
-  end
-
   def index
     @finders = Finder.all.order(:name).paginate(:page => params[:page], :per_page => 20)
   end
