@@ -15,4 +15,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require_tree .
+//= require namespace
+//= require util
+//= require initializer
+//= require category
+//= require finders

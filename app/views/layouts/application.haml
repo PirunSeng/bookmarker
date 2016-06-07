@@ -11,11 +11,19 @@
     :javascript
       try{Typekit.load();}catch(e){}
     = csrf_meta_tags
-  %body
+  %body{ id: "#{controller_name}-#{params[:action]}" }
     = render 'shared/navbar_header'
     .container
       - if notice.present?
         %p.notice= notice
       - if alert.present?
         %p.alert= alert
+      .row
+        .col-xs-12
+          .my-ad
+            %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+            / Test Ad
+            %ins.adsbygoogle{"data-ad-client" => "ca-pub-8665617687113901", "data-ad-format" => "auto", "data-ad-slot" => "6224326673", :style => "display:block"}
+            :javascript
+              (adsbygoogle = window.adsbygoogle || []).push({});
       = yield
