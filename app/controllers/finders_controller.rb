@@ -1,6 +1,5 @@
 class FindersController < ApplicationController
   before_action :set_finder, only: [:show, :edit, :update, :destroy]
-  before_action :set_category
 
   def index
     @finders = Finder.all.order(:name).paginate(:page => params[:page], :per_page => 20)
@@ -57,12 +56,7 @@ class FindersController < ApplicationController
       @finder = Finder.find(params[:id])
     end
 
-
     def finder_params
-      params.require(:finder).permit(:name, :reference, :category_id)
-    end
-
-    def set_category
-      @categories = Category.all
+      params.require(:finder).permit(:name, :reference)
     end
 end
