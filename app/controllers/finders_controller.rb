@@ -57,6 +57,6 @@ class FindersController < ApplicationController
     end
 
     def finder_params
-      params.require(:finder).permit(:name, :reference)
+      params.require(:finder).permit(:name, :reference, :description)
     end
 end
