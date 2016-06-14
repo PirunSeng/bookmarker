@@ -1,5 +1,5 @@
 class FindersController < ApplicationController
-  before_action :set_finder, only: [:show, :edit, :update, :destroy]
+  before_action :find_finder, only: [:show, :edit, :update, :destroy]
 
   def index
     @finders = Finder.all.order(:name).paginate(:page => params[:page], :per_page => 20)
@@ -16,47 +16,35 @@ class FindersController < ApplicationController
   end
 
   def create
-    @finder = Finder.new(finder_params)
+    @finder = Finder.create(finder_params)
     @finder.user_id = current_user.id
-
-    respond_to do |format|
-      if @finder.save
-        format.html { redirect_to @finder, notice: 'Finder was successfully created.' }
-        format.json { render :show, status: :created, location: @finder }
-      else
-        format.html { render :new }
-        format.json { render json: @finder.errors, status: :unprocessable_entity }
-      end
+    if @finder.save
+      redirect_to @finder, notice: 'Finder was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @finder.update(finder_params)
-        format.html { redirect_to @finder, notice: 'Finder was successfully updated.' }
-        format.json { render :show, status: :ok, location: @finder }
-      else
-        format.html { render :edit }
-        format.json { render json: @finder.errors, status: :unprocessable_entity }
-      end
+    if @finder.update_attributes(finder_params)
+      redirect_to @finder, notice: 'Finder was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @finder.destroy
-    respond_to do |format|
-      format.html { redirect_to finders_url, notice: 'Finder was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to finders_url, notice: 'Finder was successfully destroyed.'
   end
 
   private
 
-    def set_finder
-      @finder = Finder.find(params[:id])
-    end
+  def find_finder
+    @finder = Finder.find(params[:id])
+  end
 
-    def finder_params
-      params.require(:finder).permit(:name, :reference, :description)
-    end
+  def finder_params
+    params.require(:finder).permit(:name, :reference, :description)
+  end
 end
