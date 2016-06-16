@@ -2,7 +2,7 @@ class FindersController < ApplicationController
   before_action :find_finder, only: [:show, :edit, :update, :destroy]
 
   def index
-    @finders = Finder.all.order(:name).paginate(:page => params[:page], :per_page => 20)
+    @finders = Finder.all.order(:name).paginate(page: params[:page], per_page: 20)
   end
 
   def show
@@ -35,7 +35,7 @@ class FindersController < ApplicationController
 
   def destroy
     @finder.destroy
-    redirect_to finders_url, notice: 'Finder was successfully destroyed.'
+    redirect_to finders_url, notice: 'Finder was successfully deleted.'
   end
 
   private

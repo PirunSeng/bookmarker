@@ -16,8 +16,6 @@
   %body{ id: "#{controller_name}-#{params[:action]}" }
     = render 'shared/navbar_header'
     .container
-      - if notice.present?
-        %p.notice= notice
-      - if alert.present?
-        %p.alert= alert
+      #notice.hide= notice if notice
+      #alert.hide= alert if alert
       = yield

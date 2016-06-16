@@ -4,6 +4,7 @@
 //= require materialize-sprockets
 //= require namespace
 //= require util
+//= require common
 //= require initializer
 
 //= require finders

@@ -1,3 +1,19 @@
 ul#nav-mobile .dropdown-button .material-icons {
   line-height: inherit;
 }
+
+.pagination{
+  li.active {
+    color: #fff;
+  }
+}
+
+#toast-container {
+  .success {
+    background-color: $success-color;
+  }
+
+  .error {
+    background-color: $secondary-color;
+  }
+}

@@ -9,6 +9,7 @@ gem 'haml',                 '~> 4.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
+gem 'materialize-sass', '~> 0.96.1'
 gem 'pg', '~> 0.18.4'
 gem 'pry', '~> 0.10.3'
 gem 'rails', '4.2.4'
@@ -18,7 +19,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form', '~> 3.2'
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate', '~> 3.0', '>= 3.0.7'
-gem 'materialize-sass', '~> 0.96.1'
+gem 'will_paginate-materialize'
 
 group :development, :test do
   gem 'byebug'
