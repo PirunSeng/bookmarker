@@ -1,9 +1,10 @@
 = simple_form_for @finder do |f|
-  .form-group
-    = f.input :name, input_html: { class: 'form-control' }
-  .form-group
-    = f.input :reference, input_html: { class: 'form-control' }
-  .form-group
-    = f.input :description, input_html: { class: 'form-control' }
-  .form-group
-    = f.submit class: 'btn btn-primary'
+  .input-field
+    = f.input :name, label: 'Title'
+  .input-field
+    = f.input :reference, label: 'Reference'
+  .input-field
+    = f.input :description, as: :text, input_html: { class: 'materialize-textarea' }
+  .input-field
+    = f.submit class: 'btn green'
+    = link_to 'Cancel', finders_path, class: 'btn waves-effect waves-light blue'

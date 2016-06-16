@@ -1,19 +1,17 @@
 .row
-  .col-xs-12
-    %h1.text-center Listing Finders
+  .col.s12
     - if user_signed_in?
-      %h3.text-center= link_to 'Add New Finder', new_finder_path, class: 'btn btn-success'
-  .col-sm-12
-    %table.table.table-hover
+      = link_to new_finder_path, class: 'btn-add btn-floating btn-large waves-effect waves-light green right' do
+        %i.material-icons add
+  .col.s12
+    %table.hoverable
       %thead
         %tr
-          %th #
-          %th Looking For
-          %th References
+          %th Title
+          %th Reference
       %tbody
-        - @finders.each_with_index do |finder, index|
+        - @finders.each do |finder|
           %tr
-            %td= index+1
             - if user_signed_in?
               %td= link_to h(finder.name), finder
             - else

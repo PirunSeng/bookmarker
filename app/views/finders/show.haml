@@ -1,33 +1,25 @@
 .row
-  .col-xs-12.col-sm-8
+  .col.s12.m8
     .row
-      .col-xs-12.col-sm-3
-        %h5
-          %strong Looking for :
-      .col-xs-12.col-sm-9
-        %h4= @finder.name
+      .col.s12.m4
+        %p
+          %strong Title
+      .col.s12.m8
+        %p= @finder.name
     .row
-      .col-xs-12.col-sm-3
-        %h5
-          %strong Check this :
-      .col-xs-12.col-sm-9
-        %h5= link_to h(@finder.reference), h(@finder.reference), target: '_blank'
+      .col.s12.m4
+        %p
+          %strong Reference
+      .col.s12.m8
+        %p= link_to h(@finder.reference), h(@finder.reference), target: '_blank'
     .row
-      .col-xs-12.col-sm-3
-        %h5
-          %strong Description :
-      .col-xs-12.col-sm-9
-        %h5= @finder.description
+      .col.s12.m4
+        %p
+          %strong Description
+      .col.s12.m8
+        %p= @finder.description
 
     - if user_signed_in?
-      = link_to 'Edit', edit_finder_path(@finder), class: 'btn btn-link'
-      |
-      = link_to 'Back', finders_path, class: 'btn btn-link'
-  / Related Finders, implement this later
-  / .col-xs-12.col-sm-4
-  /   %p
-  /     %strong Are you looking for:
-  /     = @finder.name
-  /   %p
-  /     %strong Check out this link:
-  /     = @finder.reference
+      = link_to 'Back', finders_path, class: 'btn waves-effect waves-light blue'
+      = link_to 'Edit', edit_finder_path(@finder), class: 'btn waves-effect waves-light orange'
+      = link_to 'Delete', finder_path(@finder), class: 'btn waves-effect waves-light red', method: :delete, data: { confirm:'Are you sure you want to delete?' }
