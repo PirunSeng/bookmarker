@@ -3,8 +3,14 @@
     - if user_signed_in?
       = link_to new_finder_path, class: 'btn-add btn-floating btn-large waves-effect waves-light green right' do
         %i.material-icons add
-  .col.s12
-    %table.hoverable
+  .col.s12.hide-on-med-and-up
+    - @finders.each do |finder|
+      %p{style: 'border-bottom:1px solid #cacaca;padding-bottom:10px;'}
+        %strong= finder.name
+        %br
+        = link_to truncate(h(finder.reference), length: 40), finder.reference, target: '_blank'
+  .col.s12.hide-on-small-only
+    %table.bordered
       %thead
         %tr
           %th Title
@@ -17,4 +23,5 @@
             - else
               %td= h(finder.name)
             %td= link_to h(finder.reference), finder.reference, target: '_blank'
+  .col.s12
     = will_paginate @finders, renderer: MaterializePagination::Rails

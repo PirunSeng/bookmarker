@@ -5,7 +5,7 @@
     = link_to 'Log Out', destroy_user_session_path, method: :delete
 %nav
   .nav-wrapper
-    = link_to 'FastFinder', root_path, class: 'brand-logo center'    
+    = link_to 'FastFinder', root_path, class: 'brand-logo'
     %ul#nav-mobile.right
       - unless user_signed_in?
         %li

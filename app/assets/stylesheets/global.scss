@@ -17,3 +17,17 @@ ul#nav-mobile .dropdown-button .material-icons {
     background-color: $secondary-color;
   }
 }
+
+.container {
+  padding: 0;
+}
+
+.brand-logo {
+  left: 0 !important;
+  padding-left: 10px !important;
+  -webkit-transform: translateX(0) !important;
+  -moz-transform: translateX(0) !important;
+  -ms-transform: translateX(0) !important;
+  -o-transform: translateX(0) !important;
+  transform: translateX(0) !important;
+}
