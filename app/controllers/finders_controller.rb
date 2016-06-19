@@ -2,7 +2,11 @@ class FindersController < ApplicationController
   before_action :find_finder, only: [:show, :edit, :update, :destroy]
 
   def index
-    @finders = Finder.all.order(:name).paginate(page: params[:page], per_page: 20)
+    if params[:search]
+      @finders = Finder.search(params[:search]).order(:name).paginate(page: params[:page], per_page: 20)
+    else
+      @finders = Finder.all.order(:name).paginate(page: params[:page], per_page: 20)
+    end
   end
 
   def show

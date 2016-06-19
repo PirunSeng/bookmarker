@@ -1,12 +1,40 @@
-.btn-add {
-  margin-top: 20px;
+body[id='finders-index'] {
+  .btn-add {
+    margin-top: 20px;
+  }
+
+  td {
+    font-family: "nimbus-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+  }
+
+  .pagination span, .pagination em, .pagination a {
+    padding: 0 10px;
+  }
+
+  .search-finder {
+    margin: 25px 0;
+  
+    .search-box {
+      padding: 0 10px;
+
+      .search {
+        border-bottom: 0;
+        margin: 0;
+      }
+
+      .material-icons {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+    }
+  }
+
+  .wide-border-bottom {
+    border-bottom: 1px solid #d0d0d0;
+    padding-bottom: 10px;
+  }
 }
 
-td {
-  font-family: "nimbus-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 300;
-}
 
-.pagination span, .pagination em, .pagination a {
-  padding: 0 10px;
-}

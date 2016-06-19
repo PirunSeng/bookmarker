@@ -3,6 +3,8 @@ class Finder < ActiveRecord::Base
 
   validates :name, :reference, presence: true, uniqueness: { case_sensitive: false }
 
+  scope :search, -> (value) { where('name LIKE ? OR reference LIKE ? OR description LIKE ?', "%#{value}%", "%#{value}%", "%#{value}%") }
+
   private
 
   def author?

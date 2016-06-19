@@ -3,9 +3,17 @@
     - if user_signed_in?
       = link_to new_finder_path, class: 'btn-add btn-floating btn-large waves-effect waves-light green right' do
         %i.material-icons add
+  .col.s12
+    = form_tag finders_path, method: 'get', class: 'search-finder' do
+      .card.search-box
+        = text_field_tag :search, params[:search], class: 'search'
+        %i.material-icons search
+      = button_tag 'Search', name: nil, class: 'btn waves-effect waves-light blue'
+      = link_to 'Clear', finders_path, class: 'btn waves-effect waves-light blue'
+
   .col.s12.hide-on-med-and-up
     - @finders.each do |finder|
-      %p{style: 'border-bottom:1px solid #cacaca;padding-bottom:10px;'}
+      %p.wide-border-bottom
         %strong= finder.name
         %br
         = link_to truncate(h(finder.reference), length: 40), finder.reference, target: '_blank'
