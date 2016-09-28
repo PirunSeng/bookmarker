@@ -3,33 +3,33 @@
     - if user_signed_in?
       = link_to new_finder_path, class: 'btn-add btn-floating btn-large waves-effect waves-light green right' do
         %i.material-icons add
-  .col.s12
-    = form_tag finders_path, method: 'get', class: 'search-finder' do
-      .card.search-box
-        = text_field_tag :search, params[:search], class: 'search'
-        %i.material-icons search
-      = button_tag 'Search', name: nil, class: 'btn waves-effect waves-light blue'
-      = link_to 'Clear', finders_path, class: 'btn waves-effect waves-light blue'
 
-  .col.s12.hide-on-med-and-up
-    - @finders.each do |finder|
-      %p.wide-border-bottom
-        %strong= finder.name
-        %br
-        = link_to truncate(h(finder.reference), length: 40), finder.reference, target: '_blank'
-  .col.s12.hide-on-small-only
-    %table.bordered
-      %thead
-        %tr
-          %th Title
-          %th Reference
-      %tbody
-        - @finders.each do |finder|
-          %tr
-            - if user_signed_in?
-              %td= link_to h(finder.name), finder
-            - else
-              %td= h(finder.name)
-            %td= link_to h(finder.reference), finder.reference, target: '_blank'
   .col.s12
-    = will_paginate @finders, renderer: MaterializePagination::Rails
+    / %table.bordered
+    /   %thead
+    /     %tr
+    /       %th Title
+    /       %th Reference
+    /   %tbody
+    /     - @finders.each do |finder|
+    /       %tr
+    /         - if user_signed_in?
+    /           %td= link_to h(finder.name), finder
+    /         - else
+    /           %td= h(finder.name)
+    /         %td= link_to h(finder.reference), finder.reference, target: '_blank'
+    .panel.panel-default
+      .panel-body
+        .row
+          = datagrid_form_for @finder_grid, url: finders_url, html: { class: 'grid-form' }
+    .table-responsive
+      = datagrid_table @finder_grid, html: { class: 'bordered finders' }
+  .col.s12.m9
+    = will_paginate @finder_grid.assets, renderer: MaterializePagination::Rails
+  .col.s12.m3
+    %p.right
+      = link_to current_url(format: 'csv'), class: 'waves-effect waves-light btn' do
+        %i.material-icons.right cloud_download
+        export
+
+

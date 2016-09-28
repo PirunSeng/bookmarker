@@ -2,10 +2,16 @@ class FindersController < ApplicationController
   before_action :find_finder, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:search]
-      @finders = Finder.search(params[:search]).order(:name).paginate(page: params[:page], per_page: 20)
-    else
-      @finders = Finder.all.order(:name).paginate(page: params[:page], per_page: 20)
+    @finder_grid = FinderGrid.new(params[:finder_grid])
+    respond_to do |f|
+      f.html do
+        @finder_grid.scope { |scope| scope.paginate(page: params[:page], per_page: 20) }
+      end
+      f.csv do
+        send_data @finder_grid.to_csv, type: 'text/csv',
+                                       disposition: 'inline',
+                                       filename: "finder_references-#{Time.now}.csv"
+      end
     end
   end
 

@@ -3,7 +3,9 @@ class Finder < ActiveRecord::Base
 
   validates :name, :reference, presence: true, uniqueness: { case_sensitive: false }
 
-  scope :search, -> (value) { where('name LIKE ? OR reference LIKE ? OR description LIKE ?', "%#{value}%", "%#{value}%", "%#{value}%") }
+  scope :name_like,        -> (value) { where('LOWER(finders.name) LIKE ?', "%#{value.downcase}%") }
+  scope :reference_like,   -> (value) { where('LOWER(finders.reference) LIKE ?', "%#{value.downcase}%") }
+  scope :description_like, -> (value) { where('LOWER(finders.description) LIKE ?', "%#{value.downcase}%") }
 
   private
 
