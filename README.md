@@ -4,7 +4,7 @@ I find it difficult to go through my bookmarks and find it line by line even I a
 To get up and running you will need these dependencies:
 * Ruby version 2.3.1
 * Rails version 4.2.4
-* PostgreSQL
+* PostgreSQL 9.2
 
 You are all set.
 -> Run "rails s" on your terminal
