@@ -6,14 +6,14 @@ To get up and running you will need these dependencies:
 * Rails version 4.2.4
 * PostgreSQL 9.2
 
-* Then:
-* Clone the project
-* On your terminal
-  -> Navigate to project root directory
-  -> Run "bundle install" command to install all depen
-  -> Run "rake db:create" command to create database
-  -> Run "rake db:migrate" command to create migrate all schema migration
-  -> Run "rails s" command
+* Then clone the project
+
+On your terminal
+* Navigate to project root directory
+* Run "bundle install" command to install all depen
+* Run "rake db:create" command to create database
+* Run "rake db:migrate" command to create migrate all schema migration
+* Run "rails s" command
 * Navigate to your browser with "localhost:3000"
 
 * Yeah....enjoy your bookmarkers specialist!
