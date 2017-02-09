@@ -12,6 +12,13 @@
           %strong Reference
       .col.s12.m8
         %p= link_to h(@finder.reference), h(@finder.reference), target: '_blank'
+    - if user_signed_in? && manageable?(@finder)
+      .row
+        .col.s12.m4
+          %p
+            %strong Privacy
+        .col.s12.m8
+          %p= @finder.privacy
     .row
       .col.s12.m4
         %p
@@ -19,7 +26,7 @@
       .col.s12.m8
         %p= @finder.description
 
-    - if user_signed_in?
+    - if user_signed_in? && manageable?(@finder)
       = link_to 'Back', finders_path, class: 'btn waves-effect waves-light blue'
       = link_to 'Edit', edit_finder_path(@finder), class: 'btn waves-effect waves-light orange'
       = link_to 'Delete', finder_path(@finder), class: 'btn waves-effect waves-light red', method: :delete, data: { confirm:'Are you sure you want to delete?' }

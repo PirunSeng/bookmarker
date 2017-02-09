@@ -4,6 +4,8 @@
   .input-field
     = f.input :reference, label: 'Reference'
   .input-field
+    = f.input :privacy, as: :select, collection: Finder::PRIVACY, label_html: { class: 'active' }, include_blank: false
+  .input-field
     = f.input :description, as: :text, input_html: { class: 'materialize-textarea' }
   .input-field
     = f.submit class: 'btn green'

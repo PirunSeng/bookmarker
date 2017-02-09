@@ -9,7 +9,10 @@ class FinderGrid
   filter(:reference, :string) { |value, scope| scope.reference_like(value) }
   filter(:description, :string) { |value, scope| scope.description_like(value) }
 
-  column(:name, header: 'Title')
+  column(:name, header: 'Title', html: false)
+  column(:name, header: 'Title', html: true) do |object|
+    link_to object.name, finder_path(object)
+  end
   column(:reference, html: true) do |object|
     link_to object.reference, object.reference, target: :_blank
   end

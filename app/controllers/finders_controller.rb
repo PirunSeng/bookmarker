@@ -5,9 +5,10 @@ class FindersController < ApplicationController
     @finder_grid = FinderGrid.new(params[:finder_grid])
     respond_to do |f|
       f.html do
-        @finder_grid.scope { |scope| scope.paginate(page: params[:page], per_page: 20) }
+        @finder_grid.scope { |scope| scope.accessible(current_user).paginate(page: params[:page], per_page: 20) }
       end
       f.csv do
+        @finder_grid.scope { |scope| scope.accessible(current_user) }
         send_data @finder_grid.to_csv, type: 'text/csv',
                                        disposition: 'inline',
                                        filename: "finder_references-#{Time.now}.csv"
@@ -55,6 +56,6 @@ class FindersController < ApplicationController
   end
 
   def finder_params
-    params.require(:finder).permit(:name, :reference, :description)
+    params.require(:finder).permit(:name, :reference, :description, :privacy)
   end
 end

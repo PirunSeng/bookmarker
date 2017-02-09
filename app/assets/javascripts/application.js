@@ -8,4 +8,5 @@
 //= require common
 //= require initializer
 
-//= require finders
+//= require finders/form
+//= require finders/index
