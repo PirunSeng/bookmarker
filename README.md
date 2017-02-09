@@ -10,7 +10,7 @@ To get up and running you will need these dependencies:
 
 On your terminal
 * Navigate to project root directory
-* Run "bundle install" command to install all depen
+* Run "bundle install" command to install all depencies
 * Run "rake db:create" command to create database
 * Run "rake db:migrate" command to create migrate all schema migration
 * Run "rails s" command
