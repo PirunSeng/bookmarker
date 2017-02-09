@@ -13,7 +13,8 @@ On your terminal
 * Run "bundle install" command to install all depencies
 * Run "rake db:create" command to create database
 * Run "rake db:migrate" command to create migrate all schema migration
-* Run "rails s" command
-* Navigate to your browser with "localhost:3000"
+* Run "rails s" command to start
 
-* Yeah....enjoy your bookmarkers specialist!
+Navigate to your browser with "localhost:3000"
+
+Yeah....enjoy your bookmarkers specialist!
